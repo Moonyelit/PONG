@@ -1,0 +1,82 @@
+/* Applique la boîte de dimensionnement border-box à tous les éléments */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+/* Définit les variables CSS pour les couleurs */
+:root{
+    --hue: 215;
+    --saturation: 50%;
+    --foreground-color:hsl(var(--hue), var(--saturation), 80%);
+    --background-color:hsl(var(--hue), var(--saturation), 25%);
+}
+
+/* Style pour le corps de la page */
+body {
+  margin: 0;
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+
+/* Style pour les raquettes */
+.paddle {
+--position:50;
+
+  position: absolute;
+  background-color: var(--foreground-color); 
+  top:calc(var(--position) * 1vh);
+  transform: translateY(-50%);
+  width: 1vh;
+  height: 10vh;
+}
+
+/* Position de la raquette gauche */
+.paddle.left {
+    left: 1vw;
+}
+
+/* Position de la raquette droite */
+.paddle.right {
+    right: 1vw;
+}
+
+/* Style pour la balle */
+.ball{
+    --x:50;
+    --y:50;
+
+    position: absolute;
+    background-color: var(--foreground-color);
+    top: calc(var(--y) * 1vh);
+    left: calc(var(--x) * 1vw);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.5vh;
+    height: 2.5vh;
+}
+
+/* Style pour le score */
+.score{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 7vh;
+    color:var(--foreground-color)
+}
+
+/* Style pour chaque élément de score */
+.score > * {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding : 0 2vh;
+    margin : 1vh 0;
+    opacity: .5;
+}
+
+/* Style pour le premier élément de score */
+.score > :first-child {
+    text-align: right;
+    border-right:.5vh solid var(--foreground-color);
+}
